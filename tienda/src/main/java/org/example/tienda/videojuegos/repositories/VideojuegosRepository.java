@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 public interface VideojuegosRepository extends JpaRepository<Videojuego, Long> , JpaSpecificationExecutor<Videojuego> {
 
-   Optional<Videojuego> findByIdAndDeletedFalse(Long id);
+    Optional<Videojuego> findByIdAndDeletedFalse(Long id);
 
     boolean existsByCodigo(String codigo);
 
