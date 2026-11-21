@@ -21,4 +21,5 @@ public interface VideojuegosRepository extends JpaRepository<Videojuego, Long> ,
    Optional<Videojuego> findByIdAndDeletedFalse(Long id);
 
     boolean existsByCodigo(String codigo);
+
 }
