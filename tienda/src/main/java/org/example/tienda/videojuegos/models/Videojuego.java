@@ -56,5 +56,6 @@ public class Videojuego {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(name = "updated_at")
+    @UpdateTimestamp
     private LocalDateTime updatedAt = LocalDateTime.now();
 }
