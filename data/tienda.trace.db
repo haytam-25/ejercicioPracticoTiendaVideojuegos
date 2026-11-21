@@ -1,0 +1,82 @@
+2026-11-21 18:36:19.355901+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "=================================================================== VIDEOJUEGOS [*]· DESCOMENTA este bloque cuando termines la TAREA 1. Si los 8 INSERT entran sin error al arrancar, tu entidad esta bien. =================================================================== INSERT INTO videojuegos (titulo, codigo, precio, unidades, edad_minima, estudio_id, is_deleted, created_at, updated_at) VALUES ('The Legend of Zelda: Breath of the Wild', 'NIN-2017-Z', 59.99, 6, 12, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Mario Kart 8 Deluxe', 'NIN-2017-M', 49.99, 10, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Animal Crossing: New Horizons', 'NIN-2020-A', 54.90, 0, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Elden Ring', 'FRS-2022-E', 69.99, 4, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Dark Souls III', 'FRS-2016-D', 29.95, 0, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Metroid Dread', 'MSS-2021-M', 39.99, 3, 12, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Castlevania: Lords of Shadow', 'MSS-2010-C', 19.99, 2, 18, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('The Witcher 3: Wild Hunt', 'CDP-2015-W', 24.99, 8, 18, 4, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"
+Syntax error in SQL statement "=================================================================== VIDEOJUEGOS [*]· DESCOMENTA este bloque cuando termines la TAREA 1. Si los 8 INSERT entran sin error al arrancar, tu entidad esta bien. =================================================================== INSERT INTO videojuegos (titulo, codigo, precio, unidades, edad_minima, estudio_id, is_deleted, created_at, updated_at) VALUES ('The Legend of Zelda: Breath of the Wild', 'NIN-2017-Z', 59.99, 6, 12, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Mario Kart 8 Deluxe', 'NIN-2017-M', 49.99, 10, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Animal Crossing: New Horizons', 'NIN-2020-A', 54.90, 0, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Elden Ring', 'FRS-2022-E', 69.99, 4, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Dark Souls III', 'FRS-2016-D', 29.95, 0, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Metroid Dread', 'MSS-2021-M', 39.99, 3, 12, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Castlevania: Lords of Shadow', 'MSS-2010-C', 19.99, 2, 18, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('The Witcher 3: Wild Hunt', 'CDP-2015-W', 24.99, 8, 18, 4, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)"; SQL statement:
+=================================================================== VIDEOJUEGOS · DESCOMENTA este bloque cuando termines la TAREA 1. Si los 8 INSERT entran sin error al arrancar, tu entidad esta bien. =================================================================== INSERT INTO videojuegos (titulo, codigo, precio, unidades, edad_minima, estudio_id, is_deleted, created_at, updated_at) VALUES ('The Legend of Zelda: Breath of the Wild', 'NIN-2017-Z', 59.99, 6, 12, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Mario Kart 8 Deluxe', 'NIN-2017-M', 49.99, 10, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Animal Crossing: New Horizons', 'NIN-2020-A', 54.90, 0, 3, 1, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Elden Ring', 'FRS-2022-E', 69.99, 4, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Dark Souls III', 'FRS-2016-D', 29.95, 0, 16, 2, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Metroid Dread', 'MSS-2021-M', 39.99, 3, 12, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('Castlevania: Lords of Shadow', 'MSS-2010-C', 19.99, 2, 18, 3, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP), ('The Witcher 3: Wild Hunt', 'CDP-2015-W', 24.99, 8, 18, 4, false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP) [42000-240]
+2026-11-21 17:39:13.447398Z jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:478)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:351)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:166)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:543)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:744)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-11-21 17:39:16.989257Z jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:478)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:351)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:166)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:543)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:744)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-11-21 17:39:32.633239Z jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:478)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:351)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:166)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:543)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:744)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-11-21 17:39:33.148641Z jdbc[4]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:478)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:351)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:166)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:543)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:744)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-11-21 17:39:33.148677Z jdbc[5]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1624)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:478)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:351)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:166)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:543)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:744)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:623)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-11-21 17:39:33.159380Z jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "FLYWAY_SCHEMA_HISTORY" no encontrada
+Table "FLYWAY_SCHEMA_HISTORY" not found; SQL statement:
+SELECT concat(script, '_', success) FROM flyway_schema_history; [42102-232]
+2026-11-21 17:39:33.159380Z jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "DATABASECHANGELOG" no encontrada
+Table "DATABASECHANGELOG" not found; SQL statement:
+SELECT id, filename, exectype FROM DATABASECHANGELOG; [42102-232]
