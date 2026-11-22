@@ -1,11 +1,25 @@
 {
   "info": {
+    "_postman_id": "dabf6f65-0471-4233-a7b4-b08ddf5b5be9",
     "name": "Tienda · examen UT5",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60210702",
+    "_collection_link": "https://go.postman.co/collection/60210702-dabf6f65-0471-4233-a7b4-b08ddf5b5be9?source=collection_link"
   },
   "item": [
     {
       "name": "Ejemplo · ping",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -23,20 +37,22 @@
         },
         "description": "Si responde 200, el proyecto arranca."
       },
+      "response": []
+    },
+    {
+      "name": "Ejemplo · listar estudios",
       "event": [
         {
           "listen": "test",
           "script": {
             "type": "text/javascript",
             "exec": [
-              "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });"
+              "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
+              "pm.test(\"content.length = 4\", function () { pm.expect(pm.response.json().content.length).to.eql(4); });"
             ]
           }
         }
-      ]
-    },
-    {
-      "name": "Ejemplo · listar estudios",
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -53,18 +69,203 @@
         },
         "description": "Tus 8 peticiones van debajo de estas dos, sin carpetas."
       },
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Código 200\", function () { pm.response.to.have.status(200); });",
-              "pm.test(\"content.length = 4\", function () { pm.expect(pm.response.json().content.length).to.eql(4); });"
-            ]
-          }
+      "response": []
+    },
+    {
+      "name": "01 Listar paginado",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/videojuegos?page=1&size=3&sort=precio,asc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "3"
+            },
+            {
+              "key": "sort",
+              "value": "precio,asc"
+            }
+          ]
         }
-      ]
+      },
+      "response": []
+    },
+    {
+      "name": "02 Filtros combinados",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/videojuegos?estudio=nintendo&edadMax=3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos"
+          ],
+          "query": [
+            {
+              "key": "estudio",
+              "value": "nintendo"
+            },
+            {
+              "key": "edadMax",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "03 Videojuego que no existe",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/api/v1/videojuegos/999",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "04 Crear videojuego",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"titulo\": \"Metket Jjaa\",\n    \"codigo\": \"MSS-2421-M\",\n    \"precio\": 39.99,\n    \"unidades\": 3,\n    \"edadMinima\": 12,\n    \"estudioId\": 3\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/v1/videojuegos",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "05 Crear con datos inválidos",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"titulo\": \"Metket Jjaa\",\n    \"codigo\": \"MSaaa\",\n    \"precio\": 39.99,\n    \"unidades\": -3,\n    \"edadMinima\": 1,\n    \"estudioId\": 3\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/v1/videojuegos",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "06 Código repetido",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"titulo\": \"Metket Jjaa\",\n    \"codigo\": \"NIN-2017-Z\",\n    \"precio\": 39.99,\n    \"unidades\": 3,\n    \"edadMinima\": 12,\n    \"estudioId\": 3\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/v1/videojuegos",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "07 Vender sin unidades",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"cantidad\": -2}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/api/v1/videojuegos/3/unidades",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "videojuegos",
+            "3",
+            "unidades"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "variable": [
