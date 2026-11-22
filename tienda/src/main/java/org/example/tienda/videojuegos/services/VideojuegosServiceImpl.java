@@ -55,7 +55,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
 
         if (estudio.isPresent()){
             spec=spec.and((root, query, cb) ->
-                    cb.like(cb.lower(root.get("estudio")), "%" + estudio.get().toLowerCase()+"%"));
+                    cb.like(cb.lower(root.get("estudio").get("nombre")), "%" + estudio.get().toLowerCase()+"%"));
         }
         if (edadMax.isPresent()){
             spec= spec.and((root, query, cb) ->
@@ -70,7 +70,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
     @Override
     public VideojuegoResponse findById(Long id) {
 
-        return videojuegosRepository.findById(id).map(mapper::toResponse)
+        return videojuegosRepository.findByIdAndDeletedFalse(id).map(mapper::toResponse)
                 .orElseThrow(() -> new VideojuegoNotFoundException(id));
 
     }
