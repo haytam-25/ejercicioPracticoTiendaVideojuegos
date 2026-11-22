@@ -7,6 +7,7 @@ import org.example.tienda.videojuegos.dto.VideojuegoResponse;
 import org.example.tienda.videojuegos.exceptions.VideojuegoBadRequestException;
 import org.example.tienda.videojuegos.exceptions.VideojuegoConflictException;
 import org.example.tienda.videojuegos.exceptions.VideojuegoNotFoundException;
+import org.example.tienda.videojuegos.exceptions.VideojuegoSinUnidadesException;
 import org.example.tienda.videojuegos.mappers.VideojuegoMapper;
 import org.example.tienda.videojuegos.models.Videojuego;
 import org.example.tienda.videojuegos.repositories.VideojuegosRepository;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -36,6 +38,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
         this.mapper = mapper;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Page<VideojuegoResponse> findAll(Optional<String> titulo,
                                             Optional<String> estudio,
@@ -63,6 +66,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public VideojuegoResponse findById(Long id) {
 
@@ -71,6 +75,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
 
     }
 
+    @Transactional
     @Override
     public VideojuegoResponse save(VideojuegoRequest request) {
 
@@ -88,6 +93,7 @@ public class VideojuegosServiceImpl implements VideojuegosService {
         return mapper.toResponse(videojuegoGuardado);
     }
 
+    @Transactional
     @Override
     public VideojuegoResponse update(Long id, VideojuegoRequest request) {
 
@@ -109,13 +115,33 @@ public class VideojuegosServiceImpl implements VideojuegosService {
         return mapper.toResponse(videojuegoact);
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
-        throw new UnsupportedOperationException("TODO 5.a");
+
+        var videojuego = videojuegosRepository.findByIdAndDeletedFalse(id)
+                .orElseThrow(() -> new VideojuegoNotFoundException(id));
+
+        videojuego.setDeleted(true);
+        videojuegosRepository.save(videojuego);
+
     }
 
+    @Transactional
     @Override
     public VideojuegoResponse ajustarUnidades(Long id, int cantidad) {
-        throw new UnsupportedOperationException("TODO 5.c");
+
+        var videojuego = videojuegosRepository.findByIdAndDeletedFalse(id)
+                .orElseThrow(() -> new VideojuegoNotFoundException(id));
+        var nuevasunidades = videojuego.getUnidades()+cantidad;
+
+        if (nuevasunidades<0){
+            throw new VideojuegoSinUnidadesException(videojuego.getTitulo(),videojuego.getUnidades(),cantidad);
+        }
+
+        videojuego.setUnidades(nuevasunidades);
+        var videoAjustado= videojuegosRepository.save(videojuego);
+
+        return mapper.toResponse(videoAjustado);
     }
 }
